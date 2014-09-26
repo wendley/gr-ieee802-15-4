@@ -1,10 +1,8 @@
-# ::: This is a fork from the project - https://github.com/bastibl/gr-ieee802-15-4 :::
-
-### ::: Original description by Bastian Bloessl - https://github.com/bastibl :::
+__::: This is a fork from the project - https://github.com/bastibl/gr-ieee802-15-4 :::__
 
 Hi!
 
-This is an IEEE802.15.4 O-QPSK transceiver for GNU Radio v3.7. It is based on the UCLA implementation (https://cgran.org/wiki/UCLAZigBee) of Thomas Schmid.
+This is an IEEE802.15.4 O-QPSK transceiver for GNU Radio v3.7. It is based on the UCLA implementation (https://cgran.org/wiki/UCLAZigBee) of Thomas Schmid and the GR-IEEE802-15-4 (https://github.com/bastibl/gr-ieee802-15-4) of Bastian Bloessl.
 
 Currently, it features the following:
 
