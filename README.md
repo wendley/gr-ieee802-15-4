@@ -24,15 +24,14 @@ You can find the firmware that I used to test interoperability with TelosB motes
 ### Dependencies
 
 - g++ 4.6 (for C++11 support)
-- gr-foo (Wireshark Connector, Packet Pad and Burst Tagger blocks)
-  https://github.com/bastibl/gr-foo.git
+- [gr-foo](https://github.com/bastibl/gr-foo.git) (Wireshark Connector, Packet Pad and Burst Tagger blocks)
 - python-matplotlib (if you want to run the GUI sample application)
-  sudo apt-get install python-matplotlib
+  `sudo apt-get install python-matplotlib`
 
 
 ### Installation
 ```Shell
-  git clone git://github.com/bastibl/gr-ieee802-15-4.git
+  git clone git://github.com/wendley/gr-ieee802-15-4.git
   cd gr-ieee802-15-4
   mkdir build
   cd build
