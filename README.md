@@ -69,7 +69,7 @@ Bastian Bloessl have some non project specific GNU Radio blocks in him gr-foo re
 ```
 
 The  hierarchical block has to be installed separately:
-Open examples/ieee802_15_4_PHY.grc in gnuradio-companion and generate (hotkey F5) the flow graph. This installs the hierarchical block in your home, where gnuradio-companion can find it (typically ~/.grc_gnuradio).
+Open examples/ieee802_15_4_PHY.grc in gnuradio-companion and generate (hotkey F5) the flow graph. This installs the hierarchical block in your home, where gnuradio-companion can find it (typically `~/.grc_gnuradio`).
 
 
 # Checking you installation
@@ -99,11 +99,11 @@ Have fun!
 
 In order to help you it is crucial that you provide enough information about what is going wrong and what you are actually trying to do. So if you write me please include at least the following
 
-- OS (Ubuntu, OSX...)
-- hardware (SDR and daughterboard)
+- OS (Ubuntu, Fedora, OSX...)
+- Radio hardware (SDR and daughterboard)
 - GNU Radio version
 - What are you trying to do
-- What is you setup, i.e. are you transmitting between SDRs or with WiFi cards.
+- What is you setup, i.e. are you transmitting between SDRs or sensor motes
 - Bandwidth and frequency
 - What did you already do to debug?
 - Where exactly does it break, i.e. is frame detection working? Is the signal field decoded correctly?).
