@@ -1,10 +1,10 @@
-__::: This is a fork from the project - https://github.com/bastibl/gr-ieee802-15-4 :::__
+**This is a fork from the project https://github.com/bastibl/gr-ieee802-15-4**
 
 Hi!
 
-This is an IEEE802.15.4 O-QPSK transceiver for GNU Radio v3.7. It is based on the UCLA implementation (https://cgran.org/wiki/UCLAZigBee) of Thomas Schmid and the GR-IEEE802-15-4 (https://github.com/bastibl/gr-ieee802-15-4) of Bastian Bloessl.
+This is an IEEE802.15.4 O-QPSK transceiver for GNU Radio v3.7. It is based on the [UCLA implementation](https://cgran.org/wiki/UCLAZigBee) of Thomas Schmid and the [GR-IEEE802-15-4](https://github.com/bastibl/gr-ieee802-15-4) of Bastian Bloessl.
 
-Currently, it features the following:
+**Currently, it features the following:**
 
 - The O-QPSK PHY encapsulated in a hierarchical block.
 - A block that implements the Rime communication stack. Rime is a lightweight communication stack designed for Wireless Sensor Networks and is part of the Contiki Operating System.
@@ -12,7 +12,7 @@ Currently, it features the following:
 - A sample application which visualizes sensor values. The application shows how easy it is to connect an external program to the flow graph by using Socket PDU blocks.
 - An IEEE 802.15.4 and Rime dissector for Wireshark.
 
-Some interesting properties:
+**Some interesting properties:**
 - Packets can be piped to Wireshark.
 - The complete physical modulation is done with plain GNU Radio blocks.
 - It is interoperable with TelosB sensor motes.
@@ -24,24 +24,23 @@ You can find the firmware that I used to test interoperability with TelosB motes
 ### Dependencies
 
 - g++ 4.6 (for C++11 support)
-
 - gr-foo (Wireshark Connector, Packet Pad and Burst Tagger blocks)
   https://github.com/bastibl/gr-foo.git
-
 - python-matplotlib (if you want to run the GUI sample application)
   sudo apt-get install python-matplotlib
 
 
 ### Installation
-
-git clone git://github.com/bastibl/gr-ieee802-15-4.git
-cd gr-ieee802-15-4
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
-sudo ldconfig
+```Shell
+  git clone git://github.com/bastibl/gr-ieee802-15-4.git
+  cd gr-ieee802-15-4
+  mkdir build
+  cd build
+  cmake ..
+  make
+  sudo make install
+  sudo ldconfig
+```
 
 The  hierarchical block has to be installed separately:
 Open examples/ieee802_15_4_PHY.grc in gnuradio-companion and generate (hotkey F5) the flow graph. This installs the hierarchical block in your home, where gnuradio-companion can find it (typically ~/.grc_gnuradio).
@@ -49,11 +48,16 @@ Open examples/ieee802_15_4_PHY.grc in gnuradio-companion and generate (hotkey F5
 
 ### Usage
 
-Open the examples/transceiver.grc flow graph with gnuradio-companion and check if all blocks are connected. Enable either the UHD blocks to interface with real hardware or the Packet Pad block to loop back the samples. Open some Rime connections and connect messages sources or Socket PDUs. You can easily connect to the Socket PDU blocks with netcat. Netcat can be started for example with
+Open the `examples/transceiver.grc` flow graph with gnuradio-companion and check if all blocks are connected. Enable either the UHD blocks to interface with real hardware or the Packet Pad block to loop back the samples. Open some Rime connections and connect messages sources or Socket PDUs. You can easily connect to the Socket PDU blocks with netcat. Netcat can be started for example with
 
-nc -u localhost 52001
+```nc -u localhost 52001```
 
 There are also startup scripts in the apps folder.
 
 Have fun!
+
+
+### Further works
+
+We will implement new funtionalities for MAC block, like carrier sensing _etc_.
 
