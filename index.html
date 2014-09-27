@@ -1,0 +1,183 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Gr-ieee802-15-4</title>
+  <meta name="description" content="An IEEE 802.15.4 ZigBee Tx Rx Gnuradio USRP (Forked)">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Gr-ieee802-15-4</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">An IEEE 802.15.4 ZigBee Tx Rx Gnuradio USRP (Forked)</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/wendley/gr-ieee802-15-4/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/wendley/gr-ieee802-15-4/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/wendley/gr-ieee802-15-4" class="code">View Gr-ieee802-15-4 on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p><strong>This is a fork from the project <a href="https://github.com/bastibl/gr-ieee802-15-4">https://github.com/bastibl/gr-ieee802-15-4</a></strong></p>
+
+<p>Hi!</p>
+
+<p>This is an IEEE802.15.4 O-QPSK transceiver for GNU Radio v3.7. It is based on the <a href="https://cgran.org/wiki/UCLAZigBee">UCLA implementation</a> of Thomas Schmid and the <a href="https://github.com/bastibl/gr-ieee802-15-4">GR-IEEE802-15-4</a> of Bastian Bloessl.</p>
+
+<p><strong>Currently, it features the following:</strong></p>
+
+<ul>
+<li>The O-QPSK PHY encapsulated in a hierarchical block.</li>
+<li>A block that implements the Rime communication stack. Rime is a lightweight communication stack designed for Wireless Sensor Networks and is part of the Contiki Operating System.</li>
+<li>A transceiver flow graph with USRP &lt;-&gt; PHY &lt;-&gt; MAC &lt;-&gt; Network layer (Rime) &lt;-&gt; UDP Socket / APP which resembles pretty well the ISO/OSI structure.</li>
+<li>A sample application which visualizes sensor values. The application shows how easy it is to connect an external program to the flow graph by using Socket PDU blocks.</li>
+<li>An IEEE 802.15.4 and Rime dissector for Wireshark.</li>
+</ul><p><strong>Some interesting properties:</strong></p>
+
+<ul>
+<li>Packets can be piped to Wireshark.</li>
+<li>The complete physical modulation is done with plain GNU Radio blocks.</li>
+<li>It is interoperable with TelosB sensor motes.</li>
+<li>It is interoperable with Contiki.</li>
+<li>It uses a block to tag packet bursts with tx_sob and tx_eob tags. This tags are understood by the UHD blocks and allow fast switching between transmission and reception.</li>
+</ul><p>You can find the firmware that I used to test interoperability with TelosB motes in the contiki folder. The firmware is based on Contiki v2.6. There is another README file in the Contiki folder that describes how to compile and use the firmware.</p>
+
+<hr><h3>
+<a name="gnu-radio-v37" class="anchor" href="#gnu-radio-v37"><span class="octicon octicon-link"></span></a>GNU Radio v3.7</h3>
+
+<p>You need at least version 3.7.3.</p>
+
+<p>There are several ways to install GNU Radio. You can use</p>
+
+<ul>
+<li><a href="http://gnuradio.org/redmine/projects/pybombs/wiki">pybombs</a></li>
+<li><a href="http://gnuradio.org/redmine/projects/gnuradio/wiki/BinaryPackages">pre-combiled binaries</a></li>
+<li><a href="http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource">from source</a></li>
+</ul><h3>
+<a name="gr-foo" class="anchor" href="#gr-foo"><span class="octicon octicon-link"></span></a>gr-foo</h3>
+
+<p>Bastian Bloessl have some non project specific GNU Radio blocks in him gr-foo repo that are needed. For example the Wireshark connector. You can find these blocks at <a href="https://github.com/bastibl/gr-foo">https://github.com/bastibl/gr-foo</a>. They are installed with the typical command sequence:</p>
+
+<pre><code>git clone https://github.com/bastibl/gr-foo.git
+cd gr-foo
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo ldconfig
+</code></pre>
+
+<h3>
+<a name="others-dependencies" class="anchor" href="#others-dependencies"><span class="octicon octicon-link"></span></a>Others dependencies</h3>
+
+<ul>
+<li>g++ 4.6 (for C++11 support)</li>
+<li>python-matplotlib (if you want to run the GUI sample application)
+<code>sudo apt-get install python-matplotlib</code>
+</li>
+</ul><h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<pre lang="Shell"><code>  git clone git://github.com/wendley/gr-ieee802-15-4.git
+  cd gr-ieee802-15-4
+  mkdir build
+  cd build
+  cmake ..
+  make
+  sudo make install
+  sudo ldconfig
+</code></pre>
+
+<p>The  hierarchical block has to be installed separately:
+Open examples/ieee802_15_4_PHY.grc in gnuradio-companion and generate (hotkey F5) the flow graph. This installs the hierarchical block in your home, where gnuradio-companion can find it (typically <code>~/.grc_gnuradio</code>).</p>
+
+<h1>
+<a name="checking-you-installation" class="anchor" href="#checking-you-installation"><span class="octicon octicon-link"></span></a>Checking you installation</h1>
+
+<p>As a first step I recommend to test the <code>examples/transceiver.grc</code> flow graph. If everything works as intended you should see...</p>
+
+<h2>
+<a name="troubleshooting" class="anchor" href="#troubleshooting"><span class="octicon octicon-link"></span></a>Troubleshooting</h2>
+
+<p>If GRC complains that it can't find some blocks (other than performance counters and hierarchical blocks) like</p>
+
+<pre><code>&gt;&gt;&gt; Error: etc.
+&gt;&gt;&gt; Error: etc.
+</code></pre>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Open the <code>examples/transceiver.grc</code> flow graph with gnuradio-companion and check if all blocks are connected. Enable either the UHD blocks to interface with real hardware or the Packet Pad block to loop back the samples. Open some Rime connections and connect messages sources or Socket PDUs. You can easily connect to the Socket PDU blocks with netcat. Netcat can be started for example with</p>
+
+<p><code>nc -u localhost 52001</code></p>
+
+<p>There are also startup scripts in the apps folder.</p>
+
+<p>Have fun!</p>
+
+<h1>
+<a name="asking-for-help" class="anchor" href="#asking-for-help"><span class="octicon octicon-link"></span></a>Asking for help</h1>
+
+<p>In order to help you it is crucial that you provide enough information about what is going wrong and what you are actually trying to do. So if you write me please include at least the following</p>
+
+<ul>
+<li>OS (Ubuntu, Fedora, OSX...)</li>
+<li>Radio hardware (SDR and daughterboard)</li>
+<li>GNU Radio version</li>
+<li>What are you trying to do</li>
+<li>What is you setup, i.e. are you transmitting between SDRs or sensor motes</li>
+<li>Bandwidth and frequency</li>
+<li>What did you already do to debug?</li>
+<li>Where exactly does it break, i.e. is frame detection working? Is the signal field decoded correctly?).</li>
+</ul><h3>
+<a name="further-works" class="anchor" href="#further-works"><span class="octicon octicon-link"></span></a>Further works</h3>
+
+<p>We will implement new funtionalities for MAC block, like carrier sensing <em>etc</em>.</p>
+
+<h3>
+<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h3>
+
+<p>Home page - <a href="http://dcc.ufmg.br/%7Ewendley/">http://dcc.ufmg.br/~wendley/</a></p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/wendley" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4607117?v=2&amp;s=60" width="48" height="48"></a> <a href="https://github.com/wendley">wendley</a> maintains <a href="https://github.com/wendley/gr-ieee802-15-4">Gr-ieee802-15-4</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/wendley/gr-ieee802-15-4/tarball/master" class="tar">tar</a><a href="https://github.com/wendley/gr-ieee802-15-4/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
