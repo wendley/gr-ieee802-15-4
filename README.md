@@ -109,10 +109,6 @@ In order to help you it is crucial that you provide enough information about wha
 - Where exactly does it break, i.e. is frame detection working? Is the signal field decoded correctly?).
 
 
-### Further works
-
-We will implement new funtionalities for MAC block, like carrier sensing _etc_.
-
 ### Contact
 
 Home page - http://dcc.ufmg.br/~wendley/
